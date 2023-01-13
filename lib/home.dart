@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    provider.url = 'http://198.251.68.245:3030';
+    provider.url = 'http://198.251.68.245:3034';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -33,7 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
               });
               if (_lights) {
                 _server(context);
-              } else {}
+              } else {
+                _server(context);
+              }
             },
           ),
           ListTile(
@@ -66,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ));
             },
           ),
+          Text(provider.myUrl),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -90,6 +93,9 @@ Future<void> _server(context) async {
   socket.on('connect', (_) => print('connect: ${socket.id}'));
   socket.on('disconnect', (_) => print('disconnect'));
   socket.on('fromServer', (_) => print(_));
+
+  socket.disconnect();
+  socket.onDisconnect((_) => {print('Disconnect')});
 }
 
 Future<void> initPlatformState(payload) async {

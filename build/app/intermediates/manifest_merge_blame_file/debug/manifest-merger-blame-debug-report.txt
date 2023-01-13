@@ -1,0 +1,104 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.smsapp"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="31" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/usuario/smsapp2/android/app/src/debug/AndroidManifest.xml:7:5-66
+15-->/Users/usuario/smsapp2/android/app/src/debug/AndroidManifest.xml:7:22-64
+16    <uses-permission android:name="android.permission.SEND_SMS" />
+16-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:3:9-70
+16-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:3:26-68
+17
+18    <queries>
+18-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:4:9-9:11
+19        <intent>
+19-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:5:5-8:14
+20            <action android:name="android.intent.action.SENDTO" />
+20-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:6:9-63
+20-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:6:17-60
+21
+22            <data android:scheme="smsto" />
+22-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:7:9-39
+22-->/Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:7:15-37
+23        </intent>
+24    </queries>
+25
+26    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+26-->[:telephony] /Users/usuario/smsapp2/build/telephony/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-81
+26-->[:telephony] /Users/usuario/smsapp2/build/telephony/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-78
+27
+28    <application
+29        android:name="android.app.Application"
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.6.0] /Users/usuario/.gradle/caches/transforms-3/acbce933e4b464a5224ed377a62db1f5/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+31        android:debuggable="true"
+32        android:extractNativeLibs="false"
+33        android:icon="@mipmap/ic_launcher"
+34        android:label="smsapp" >
+35        <activity
+36            android:name="com.example.smsapp.MainActivity"
+37            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+38            android:exported="true"
+39            android:hardwareAccelerated="true"
+40            android:launchMode="singleTop"
+41            android:theme="@style/LaunchTheme"
+42            android:windowSoftInputMode="adjustResize" >
+43
+44            <!--
+45                 Specifies an Android theme to apply to this Activity as soon as
+46                 the Android process has started. This theme is visible to the user
+47                 while the Flutter UI initializes. After that, this theme continues
+48                 to determine the Window background behind the Flutter UI.
+49            -->
+50            <meta-data
+51                android:name="io.flutter.embedding.android.NormalTheme"
+52                android:resource="@style/NormalTheme" />
+53
+54            <intent-filter>
+55                <action android:name="android.intent.action.MAIN" />
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+58            </intent-filter>
+59        </activity>
+60        <!--
+61             Don't delete the meta-data below.
+62             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+63        -->
+64        <meta-data
+65            android:name="flutterEmbedding"
+66            android:value="2" />
+67
+68        <activity
+68-->[:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-13:74
+69            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+69-->[:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-74
+70            android:exported="false"
+70-->[:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-37
+71            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+71-->[:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-71
+72
+73        <uses-library
+73-->[androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+74            android:name="androidx.window.extensions"
+74-->[androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+75            android:required="false" />
+75-->[androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+76        <uses-library
+76-->[androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+77            android:name="androidx.window.sidecar"
+77-->[androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+78            android:required="false" />
+78-->[androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+79    </application>
+80
+81</manifest>
