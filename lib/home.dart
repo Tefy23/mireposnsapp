@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    provider.url = 'http://198.251.68.245:3034';
+    provider.url = 'http://198.251.68.245:3030';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
               if (_lights) {
                 _server(context);
               } else {
-                _server(context);
+                //  _server(context);
               }
             },
           ),
@@ -95,7 +95,9 @@ Future<void> _server(context) async {
   socket.on('fromServer', (_) => print(_));
 
   socket.disconnect();
-  socket.onDisconnect((_) => {print('Disconnect')});
+  socket.onDisconnect((_) {
+    print('Disconnect');
+  });
 }
 
 Future<void> initPlatformState(payload) async {
