@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smsapp/providers/provider.dart';
@@ -13,11 +16,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _lights = false;
+  static bool _lights = false;
+  String canal = "";
+  Future<void> _server(context) async {
+    var provider = Provider.of<MyProvider>(context, listen: false);
+
+    IO.Socket socket = IO.io(provider.myUrl, <String, dynamic>{
+      'transports': ['websocket'],
+      'autoConnect': false,
+    });
+
+    if (_MyHomePageState._lights == true) {
+      socket.connect();
+      socket.onConnect((_) => print('connect')
+          //socket.emit('message', 'test');
+          );
+      socket.on('$canal', (_) => initPlatformState(_));
+    } else {
+      socket.disconnect();
+      socket.onDisconnect((_) => print('disconnect')
+          //socket.emit('message', 'test');
+          );
+    }
+
+    // socket.on('message', (_) => initPlatformState(_));
+    // socket.on('connect', (_) => print('connect: ${socket.id}'));
+    //socket.on('disconnect', (_) => print('disconnect'));
+    //socket.on('fromServer', (_) => print(_));
+  }
+
+  Future<void> initPlatformState(payload) async {
+    final telephony = Telephony.instance;
+    var val = payload.toString().split(",");
+
+    final bool? result = await telephony.requestPhoneAndSmsPermissions;
+
+    if (result != null && result) {
+      try {
+        telephony.sendSms(to: val[0], message: val[1]);
+        print("se envio");
+      } catch (e) {
+        print(e.toString());
+      }
+    }
+  }
+
+  void initState() {
+    super.initState();
+
+    //setState() {
+    var provider = Provider.of<MyProvider>(context);
+    provider.url = 'http://198.251.68.200:3030';
+    //}
+
+    canal = "Hola Mundo";
+  }
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    provider.url = 'http://198.251.68.245:3030';
+    //provider.url = 'http://198.251.68.200:3030';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -25,19 +83,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           SwitchListTile(
-            title: const Text('Estado del servicio'),
-            value: _lights,
-            onChanged: (bool value) {
-              setState(() {
-                _lights = value;
-              });
-              if (_lights) {
+              title: const Text('Estado del servicio'),
+              value: _lights,
+              onChanged: (bool value) {
+                setState(() {
+                  _lights = value;
+                });
                 _server(context);
-              } else {
-                //  _server(context);
-              }
-            },
-          ),
+              }),
           ListTile(
             title: const Text('URL del servidor'),
             onTap: () {
@@ -48,9 +101,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           "URL del Servidor",
                         ),
                         content: TextFormField(
+                          readOnly: (_lights == true),
                           initialValue: provider.myUrl,
                           onChanged: (value) {
                             provider.url = value;
+
+                            // setState(() {
+                            //   provider.url = value;
+                            // });
                           },
                         ),
                         actions: <Widget>[
@@ -69,49 +127,44 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           Text(provider.myUrl),
+          ListTile(
+            title: const Text('Canal'),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: const Text(
+                          "Canal",
+                        ),
+                        content: TextFormField(
+                          initialValue: canal,
+                          onChanged: (value) {
+                            canal = value;
+
+                            // setState(() {
+                            //   provider.url = value;
+                            // });
+                          },
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context, 'OK');
+                            },
+                            child: const Text('OK'),
+                          ),
+                        ],
+                      ));
+            },
+          ),
+          Text(canal),
         ],
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-}
-
-Future<void> _server(context) async {
-  var provider = Provider.of<MyProvider>(context, listen: false);
-
-  IO.Socket socket = IO.io(provider.myUrl, <String, dynamic>{
-    'transports': ['websocket'],
-    'autoConnect': false,
-  });
-
-  socket.connect();
-  socket.onConnect((_) {
-    print('connect');
-    socket.emit('message', 'test');
-  });
-  socket.on('message', (_) => initPlatformState(_));
-  socket.on('connect', (_) => print('connect: ${socket.id}'));
-  socket.on('disconnect', (_) => print('disconnect'));
-  socket.on('fromServer', (_) => print(_));
-
-  socket.disconnect();
-  socket.onDisconnect((_) {
-    print('Disconnect');
-  });
-}
-
-Future<void> initPlatformState(payload) async {
-  final telephony = Telephony.instance;
-  var val = payload.toString().split(",");
-
-  final bool? result = await telephony.requestPhoneAndSmsPermissions;
-
-  if (result != null && result) {
-    try {
-      telephony.sendSms(to: val[0], message: val[1]);
-      print("se envio");
-    } catch (e) {
-      print(e.toString());
-    }
   }
 }
