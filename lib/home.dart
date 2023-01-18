@@ -3,9 +3,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smsapp/controller/getx_controller.dart';
 import 'package:smsapp/providers/provider.dart';
 import 'package:telephony/telephony.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel/status.dart' as status;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -18,6 +21,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   static bool _lights = false;
   String canal = "";
+
   Future<void> _server(context) async {
     var provider = Provider.of<MyProvider>(context, listen: false);
 
@@ -61,16 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void initState() {
+  @override
+  initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      var provider = Provider.of<MyProvider>(context, listen: false);
+      setState(() {
+        provider.url = 'http://198.251.68.200:3030';
+      });
+    });
+    canal = "";
     super.initState();
-
-    //setState() {
-    var provider = Provider.of<MyProvider>(context);
-    provider.url = 'http://198.251.68.200:3030';
-    //}
-
-    canal = "Hola Mundo";
   }
+
+// getx
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           "Canal",
                         ),
                         content: TextFormField(
+                          readOnly: (_lights == true),
                           initialValue: canal,
                           onChanged: (value) {
                             canal = value;

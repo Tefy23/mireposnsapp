@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
                   ),
                   home: const MyHomePage(
                     title: "home",
+                    //channel = CanalController.connect('ws://echo.websocket.org');
                   ),
                 )));
   }
