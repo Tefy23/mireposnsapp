@@ -1,8 +1,10 @@
-#Wed Jan 18 10:12:20 MST 2023
+#Thu Jan 19 08:51:21 MST 2023
 path.4=4/classes.dex
 path.3=2/classes.dex
 path.2=14/classes.dex
 path.1=12/classes.dex
+renamed.8=classes9.dex
+path.8=15/classes.dex
 path.7=5/classes.dex
 path.6=1/classes.dex
 path.5=0/classes.dex
@@ -17,6 +19,7 @@ renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 renamed.7=classes8.dex
+base.8=/Users/usuario/smsapp2/build/app/intermediates/dex/debug/mergeLibDexDebug/15/classes.dex
 renamed.6=classes7.dex
 base.7=/Users/usuario/smsapp2/build/app/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex
 renamed.5=classes6.dex

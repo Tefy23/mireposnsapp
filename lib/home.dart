@@ -21,6 +21,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   static bool _lights = false;
   String canal = "";
+  final _channel = WebSocketChannel.connect(
+    Uri.parse('wss://echo.websocket.events'),
+  );
 
   Future<void> _server(context) async {
     var provider = Provider.of<MyProvider>(context, listen: false);
@@ -78,11 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 // getx
-
+  CanalController _controller = CanalController();
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    //provider.url = 'http://198.251.68.200:3030';
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

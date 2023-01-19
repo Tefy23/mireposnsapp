@@ -21,6 +21,7 @@ INJECTED from /Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:1:
 MERGED from /Users/usuario/smsapp2/android/app/src/main/AndroidManifest.xml:1:1-42:12
 MERGED from [:telephony] /Users/usuario/smsapp2/build/telephony/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-16:12
+MERGED from [:path_provider_android] /Users/usuario/smsapp2/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_sms] /Users/usuario/smsapp2/build/flutter_sms/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/246793f755122fe14a5802655438cb75/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/49bc944d29f70d45aa5add8e43e3247e/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
@@ -80,6 +81,8 @@ MERGED from [:telephony] /Users/usuario/smsapp2/build/telephony/intermediates/me
 MERGED from [:telephony] /Users/usuario/smsapp2/build/telephony/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:url_launcher_android] /Users/usuario/smsapp2/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/usuario/smsapp2/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/usuario/smsapp2/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_sms] /Users/usuario/smsapp2/build/flutter_sms/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_sms] /Users/usuario/smsapp2/build/flutter_sms/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/usuario/.gradle/caches/transforms-3/246793f755122fe14a5802655438cb75/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
